@@ -11,6 +11,7 @@ using namespace std;
 // git add .
 // git commit -m "설명"
 // git push
+
 // git pull
 int main() {
   cout << "안녕!\n";
@@ -77,3 +78,8 @@ void handleRecord(vector<string> record) {
   uomap[id] = nickname;
   if (uomap.find("marina") != uomap.end()) // 있음
   if (uomap.find(row) == uomap.end())    // 없음
+
+  sort(
+        numbers.begin(),
+        numbers.end()
+    );

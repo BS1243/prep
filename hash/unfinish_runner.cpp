@@ -15,11 +15,7 @@ string solution(vector<string> participant, vector<string> completion) {
   unordered_map<string, int> table; // name,int
 
   for (auto row : participant) {
-    if (table.find(row) != table.end()) {
-      table[row]++;
-    } else {
-      table[row] = 1;
-    }
+    table[row]++;
   }
   for (auto row : completion) {
     table[row]--;
