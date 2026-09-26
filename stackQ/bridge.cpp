@@ -11,8 +11,9 @@
 using namespace std;
 
 
-int solution(int n, vector<vector<int>> edge) {
-    return 1;
+int solution(int bridge_length, int weight, vector<int> truck_weights) {
+    int answer = 0;
+    return answer;
 }
 
 int main()
@@ -29,4 +30,3 @@ int main()
 
     solution(n,edge);
 }
-
