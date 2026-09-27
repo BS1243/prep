@@ -2,6 +2,9 @@
 
 #include <iostream>
 #include <vector>
+#include <queue>
+#include <utility>
+
 using namespace std;
 
 template <typename T>
@@ -42,4 +45,33 @@ inline void pr3(const vector<vector<vector<T>>>& v)
         }
         cout << '\n';
     }
+}
+
+// 일반 queue 출력
+template <typename T>
+inline void prq(queue<T> q)
+{
+    while (!q.empty())
+    {
+        cout << q.front() << ' ';
+        q.pop();
+    }
+    cout << '\n';
+}
+
+// pair queue 출력
+template <typename T1, typename T2>
+inline void prqpair(queue<pair<T1, T2>> q)
+{
+    while (!q.empty())
+    {
+        cout << '('
+             << q.front().first
+             << ", "
+             << q.front().second
+             << ") ";
+
+        q.pop();
+    }
+    cout << '\n';
 }
