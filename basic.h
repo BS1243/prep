@@ -4,6 +4,7 @@
 #include <vector>
 #include <queue>
 #include <utility>
+#include <stack>
 
 using namespace std;
 
@@ -49,7 +50,7 @@ inline void pr3(const vector<vector<vector<T>>>& v)
 
 // 일반 queue 출력
 template <typename T>
-inline void prq(queue<T> q)
+inline void prq(queue<T> q) //Q
 {
     while (!q.empty())
     {
@@ -61,7 +62,7 @@ inline void prq(queue<T> q)
 
 // pair queue 출력
 template <typename T1, typename T2>
-inline void prqpair(queue<pair<T1, T2>> q)
+inline void prqpair(queue<pair<T1, T2>> q) //Q pair
 {
     while (!q.empty())
     {
@@ -72,6 +73,64 @@ inline void prqpair(queue<pair<T1, T2>> q)
              << ") ";
 
         q.pop();
+    }
+    cout << '\n';
+}
+
+template <typename T>
+inline void prs(stack<T> s) //stack
+{
+    while (!s.empty())
+    {
+        cout << s.top() << ' ';
+        s.pop();
+    }
+    cout << '\n';
+}
+
+template <typename T1, typename T2>
+inline void prsp(stack<pair<T1, T2>> s) //stack pair
+{
+    while (!s.empty())
+    {
+        cout << '('
+             << s.top().first
+             << ", "
+             << s.top().second
+             << ") ";
+
+        s.pop();
+    }
+
+    cout << '\n';
+}
+
+// 일반 priority_queue 출력
+template <typename T, typename Container, typename Compare>
+inline void prpq(priority_queue<T, Container, Compare> pq)
+{
+    while (!pq.empty())
+    {
+        cout << pq.top() << ' ';
+        pq.pop();
+    }
+    cout << '\n';
+}
+
+// pair priority_queue 출력
+template <typename T1, typename T2, typename Container, typename Compare>
+inline void prpqpair(
+    priority_queue<pair<T1, T2>, Container, Compare> pq)
+{
+    while (!pq.empty())
+    {
+        cout << '('
+             << pq.top().first
+             << ", "
+             << pq.top().second
+             << ") ";
+
+        pq.pop();
     }
     cout << '\n';
 }
