@@ -1,5 +1,5 @@
 
-#include "../basic.h"
+
 #include <algorithm>
 #include <array>
 #include <bits/stdc++.h>
@@ -18,50 +18,65 @@ using pii = pair<int, int>;
 using vi = vector<int>;
 using vll = vector<ll>;
 
-void solve() {
+void solve()
+{
   int n, k;
   int total = 0;
   cin >> n >> k;
-  int kptr = k;
+  int kptr = k - 1;
   int fptr = 0;
 
   vector<int> a(n);
-  for (int i = 0; i < n; i++) {
+  for (int i = 0; i < n; i++)
+  {
     cin >> a[i];
   }
   int ftotal = 0, btotal = 0; // front back total
 
-  for (int i = 0; i < k-1; i++) {
+  for (int i = 0; i < k - 1; i++)
+  {
     ftotal += a[i];
     btotal += a[n - i - 1]; // static
   }
 
-  for (int i = 0; i < n - k; i++) {
-    
-    if (ftotal > btotal) { // front가 더 클때 [0] pop , ftotal 갱신
+  for (int i = 0; i < n - k; i++)
+  {
+
+    if (ftotal > btotal)
+    { // front가 더 클때 [0] pop , ftotal 갱신
       total += a[fptr];
       ftotal -= a[fptr];
 
       ftotal += a[fptr + k - 1];
       fptr++;
-    } else { //[k-1] pop
+      kptr++;
+    }
+    else
+    { //[k-1] pop
       total += a[kptr];
       kptr++;
     }
   }
-  total += a[kptr-1];
+  if (a[kptr] > a[fptr])
+  {
+    total += a[kptr];
+  }
+  else
+    total += a[fptr];
   cout << total << endl;
   return;
 }
 
-int main() {
+int main()
+{
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
 
   int t;
   cin >> t;
 
-  while (t--) {
+  while (t--)
+  {
     solve();
   }
 
@@ -80,4 +95,9 @@ int main() {
 tcn
 n,k
 tc>>
+
+
+1
+4 4
+3 4 1 2
  **/
