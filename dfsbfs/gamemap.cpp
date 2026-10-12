@@ -1,4 +1,3 @@
-
 #include <algorithm>
 #include <array>
 #include <iostream>
@@ -17,7 +16,7 @@ int solution(vector<vector<int>> maps) {
   q.push({0, 0}); // Y X
 
   dist = maps;
-
+  
   while (!q.empty()) {
     pair<int, int> cur = q.front();
     q.pop();
