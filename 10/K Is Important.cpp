@@ -1,103 +1,60 @@
 
-
-#include <algorithm>
-#include <array>
 #include <bits/stdc++.h>
-#include <iostream>
-#include <map>
-#include <queue>
-#include <set>
-#include <string>
-#include <unordered_map>
-#include <vector>
-
 using namespace std;
 
 using ll = long long;
-using pii = pair<int, int>;
-using vi = vector<int>;
-using vll = vector<ll>;
 
 void solve()
 {
-  int n, k;
-  int total = 0;
-  cin >> n >> k;
-  int kptr = k - 1;
-  int fptr = 0;
+    int n, k;
+    cin >> n >> k;
 
-  vector<int> a(n);
-  for (int i = 0; i < n; i++)
-  {
-    cin >> a[i];
-  }
-  int ftotal = 0, btotal = 0; // front back total
+    vector<int> a(n);
+    for (int i = 0; i < n; i++)
+        cin >> a[i];
 
-  for (int i = 0; i < k - 1; i++)
-  {
-    ftotal += a[i];
-    btotal += a[n - i - 1]; // static
-  }
+    ll total = 0;
 
-  for (int i = 0; i < n - k; i++)
-  {
+    // 무조건 제거되는 가운데 원소
+    for (int i = k - 1; i <= n - k; i++)
+        total += a[i];
 
-    if (ftotal > btotal)
-    { // front가 더 클때 [0] pop , ftotal 갱신
-      total += a[fptr];
-      ftotal -= a[fptr];
+    // 양쪽에서 선택 가능한 원소
+    vector<int> b;
 
-      ftotal += a[fptr + k - 1];
-      fptr++;
-      kptr++;
+    for (int i = 0; i < n; i++)
+    {
+        if (i >= k - 1 && i <= n - k)
+            continue;
+
+        b.push_back(a[i]);
     }
-    else
-    { //[k-1] pop
-      total += a[kptr];
-      kptr++;
+
+    int l = 0;
+    int r = (int)b.size() - 1;
+
+    int cnt = n - k + 1 - max(0, n - 2 * k + 2);
+
+    while (cnt--)
+    {
+        total += max(b[l], b[r]);
+        l++;
+        r--;
     }
-  }
-  if (a[kptr] > a[fptr])
-  {
-    total += a[kptr];
-  }
-  else
-    total += a[fptr];
-  cout << total << endl;
-  return;
+
+    cout << total << '\n';
 }
 
 int main()
 {
-  ios::sync_with_stdio(false);
-  cin.tie(nullptr);
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
 
-  int t;
-  cin >> t;
+    int t;
+    cin >> t;
 
-  while (t--)
-  {
-    solve();
-  }
+    while (t--)
+        solve();
 
-  return 0;
+    return 0;
 }
-/**
-4
-4 2
-1 2 3 4
-4 4
-3 4 1 2
-1 1
-1
-6 3
-1 4 8 2 6 3
-tcn
-n,k
-tc>>
-
-
-1
-4 4
-3 4 1 2
- **/
